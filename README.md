@@ -1,6 +1,6 @@
 # Next.js starter
 
-Web-application created with help of [Next.js](https://nextjs.org/) & [react-bootstrap](https://react-bootstrap.github.io/).
+Web-application created with help of [Next.js](https://nextjs.org/) & [Tailwind CSS](https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss).
 
 
 ### Requirements
@@ -14,4 +14,4 @@ Web-application created with help of [Next.js](https://nextjs.org/) & [react-boo
 ### Development
 - run `yarn dev`
 - make changes to the code
-- check your code before committing & pushing to repository: `yarn lint` & `yarn tsc`
+- check the code before pushing to the repository: `yarn lint` & `yarn tsc`
