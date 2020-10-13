@@ -9,8 +9,8 @@ const IndexPage: NextPage = () => {
         <title>Welcome · Next.js starter</title>
       </Head>
 
-      <main>
-        <h1>Next.js starter</h1>
+      <main className="py-20">
+        <h1 className="text-5xl text-center text-accent-1">Next.js starter</h1>
       </main>
     </>
   );
