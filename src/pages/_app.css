@@ -2,7 +2,8 @@
 
 /* custom base styles */
 body {
-  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-family: Roboto, sans-serif;
+  color: #333;
 }
 
 
