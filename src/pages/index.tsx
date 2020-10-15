@@ -14,7 +14,7 @@ const IndexPage: NextPage = () => {
       <Nav />
       <main className="py-20">
         <h1 className="font-thin text-5xl text-center mb-2">Next.js starter</h1>
-        <p className="text-center">Lorem ipsum dolor sit amet adiliscing elit.</p>
+        <p className="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </main>
     </>
   );
