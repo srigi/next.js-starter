@@ -1,0 +1,15 @@
+.container {
+  @apply max-w-4xl mx-auto;
+}
+
+.header {
+  background: linear-gradient(90deg, #f3f3f3, #484848 80%);
+}
+.headerContent {
+  background: url("/img/unsplash_a.jpg") 0 0 no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  height: 430px;
+  padding: 9rem 1rem 1rem 4rem;
+  text-align: right;
+}
