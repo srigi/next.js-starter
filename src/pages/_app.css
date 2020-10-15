@@ -7,9 +7,7 @@ body {
 }
 
 
-/* Start purging... */
 @tailwind components;
-/* Stop purging. */
 
 /* custom component */
 .btn-blue {
@@ -17,8 +15,6 @@ body {
 }
 
 
-/* Start purging... */
 @tailwind utilities;
-/* Stop purging. */
 
 /* custom utilities */
