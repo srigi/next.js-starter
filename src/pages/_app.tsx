@@ -3,7 +3,11 @@ import React, { FunctionComponent } from 'react';
 
 import './_app.css';
 
-/* eslint-disable-next-line react/jsx-props-no-spreading */
-const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => <Component {...pageProps} />;
+const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
+  <React.StrictMode>
+    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+    <Component {...pageProps} />
+  </React.StrictMode>
+);
 
 export default App;
