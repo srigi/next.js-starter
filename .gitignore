@@ -13,13 +13,15 @@ yarn-error.log*
 # dependencies
 /node_modules
 
+# deployment
+/.dokku/.env
+
 # next.js
 /.next/
 /build
 /out/
 
 # local env files
-.env
 .env.local
 .env.development.local
 .env.test.local

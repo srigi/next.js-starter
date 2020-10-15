@@ -1,0 +1,3 @@
+DOKKU_HOST=
+DOKKU_APP_NAME=njss  # Next.JS Starter
+DOKKU_APP_PORT=3000
