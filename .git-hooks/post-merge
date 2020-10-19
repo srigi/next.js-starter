@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+__DIR__="$(cd "$(dirname "$BASH_SOURCE}")" >/dev/null 2>&1 && pwd -P)"
+
+source ${__DIR__}/../../.git-hooks/_functions.sh
+update_git_commit_sha
