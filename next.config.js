@@ -2,7 +2,7 @@ const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const withSourceMaps = require('@zeit/next-source-maps');
 
 const {
-  GIT_COMMIT_SHA,
+  GIT_REV,
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
   SENTRY_AUTH_TOKEN,
   SENTRY_ORG,
@@ -13,7 +13,7 @@ const {
 } = process.env;
 process.env.SENTRY_DSN = SENTRY_DSN;
 console.log('>>> process.env', {
-  GIT_COMMIT_SHA,
+  GIT_REV,
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
   SENTRY_ORG,
   SENTRY_PROJECT,
@@ -22,8 +22,7 @@ console.log('>>> process.env', {
   VERCEL_GITLAB_COMMIT_SHA,
 });
 
-const COMMIT_SHA =
-  GIT_COMMIT_SHA || VERCEL_BITBUCKET_COMMIT_SHA || VERCEL_GITHUB_COMMIT_SHA || VERCEL_GITLAB_COMMIT_SHA;
+const COMMIT_SHA = GIT_REV || VERCEL_BITBUCKET_COMMIT_SHA || VERCEL_GITHUB_COMMIT_SHA || VERCEL_GITLAB_COMMIT_SHA;
 const basePath = '';
 
 module.exports = withSourceMaps({
@@ -34,16 +33,13 @@ module.exports = withSourceMaps({
     rootDir: __dirname,
   },
   webpack(config, { dev, isServer }) {
-    console.log('>>> dev', { dev });
-
     // replace @sentry/node imports with @sentry/browser when building the browser's bundle
     if (!isServer) {
       config.resolve.alias['@sentry/node'] = '@sentry/browser';
     }
 
-    if (SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT && SENTRY_AUTH_TOKEN && COMMIT_SHA && !dev) {
-      // upload the source maps during build step
-      console.log('>>> doing SentryWebpackPlugin()');
+    // upload the source maps during build step
+    if (!dev && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT && SENTRY_AUTH_TOKEN && COMMIT_SHA) {
       config.plugins.push(
         new SentryWebpackPlugin({
           include: '.next',
