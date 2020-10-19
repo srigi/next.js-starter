@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/node';
 
 import './_app.css';
 
+const { NEXT_PUBLIC_COMMIT_SHA } = process.env;
 const { NEXT_PUBLIC_SENTRY_DSN } = process.env;
 
 if (NEXT_PUBLIC_SENTRY_DSN) {
@@ -24,6 +25,7 @@ if (NEXT_PUBLIC_SENTRY_DSN) {
         },
       }),
     ],
+    release: NEXT_PUBLIC_COMMIT_SHA,
   });
 }
 
