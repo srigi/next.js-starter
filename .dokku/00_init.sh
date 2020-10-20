@@ -1,18 +1,25 @@
 #!/usr/bin/env bash
 
 __DIR__="$(cd "$(dirname "$BASH_SOURCE")" >/dev/null 2>&1 && pwd)"
-
 source ${__DIR__}/_common.sh
 source ${__DIR__}/.env
 
-printf "${COLOR_YELLOW}Creating${NC} Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC}... "
-ssh ${DOKKU_HOST} dokku apps:create ${DOKKU_APP_NAME} 2>/dev/null
-echo "OK!"
+DOKKU_HOSTS=$(compgen -A variable | grep DOKKU_HOST_)
 
-printf "${COLOR_YELLOW}Setting-up${NC} Git remote ${COLOR_BLUE}dokku${NC}... "
-git remote add dokku dokku@${DOKKU_HOST}:${DOKKU_APP_NAME} 2>/dev/null
-echo "OK!"
+for DOKKU_HOST in ${DOKKU_HOSTS}; do
+	printf "${COLOR_YELLOW}Creating${NC} Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${!DOKKU_HOST}${NC}... "
+	ssh ${!DOKKU_HOST} dokku apps:create ${DOKKU_APP_NAME} 2>/dev/null
+	echo "OK!"
+done
 
-printf "${COLOR_YELLOW}Configuring${NC} port-mapping for Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC}... "
-ssh ${DOKKU_HOST} dokku proxy:ports-set ${DOKKU_APP_NAME} http:80:3000
-echo "OK!"
+for DOKKU_HOST in ${DOKKU_HOSTS}; do
+	printf "${COLOR_YELLOW}Setting-up${NC} Git remote ${COLOR_BLUE}dokku@${!DOKKU_HOST}${NC}... "
+	git remote add dokku@${!DOKKU_HOST} dokku@${!DOKKU_HOST}:${DOKKU_APP_NAME} 2>/dev/null
+	echo "OK!"
+done
+
+for DOKKU_HOST in ${DOKKU_HOSTS}; do
+	printf "${COLOR_YELLOW}Configuring${NC} port-mapping for Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${!DOKKU_HOST}${NC}... "
+	ssh ${!DOKKU_HOST} dokku proxy:ports-set ${DOKKU_APP_NAME} http:80:3000
+	echo "OK!"
+done
