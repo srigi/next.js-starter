@@ -1,20 +1,16 @@
-@tailwind base;
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
-/* custom base styles */
+
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: Roboto, sans-serif;
   color: #333;
 }
 
 
-@tailwind components;
-
-/* custom component */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+.mw-800px {
+  max-width: 800px;
 }
-
-
-@tailwind utilities;
-
-/* custom utilities */
