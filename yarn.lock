@@ -1076,9 +1076,9 @@
     to-fast-properties "^2.0.0"
 
 "@babel/types@^7.10.4", "@babel/types@^7.10.5", "@babel/types@^7.11.0", "@babel/types@^7.11.5", "@babel/types@^7.12.1", "@babel/types@^7.12.5", "@babel/types@^7.4.4", "@babel/types@^7.7.4":
-  version "7.12.5"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.12.5.tgz#5d6b4590cfe90c0c8d7396c83ffd9fc28b5a6450"
-  integrity sha512-gyTcvz7JFa4V45C0Zklv//GmFOAal5fL23OWpBLqc4nZ4Yrz67s4kCNwSK1Gu0MXGTU8mRY3zJYtacLdKXlzig==
+  version "7.12.6"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.12.6.tgz#ae0e55ef1cce1fbc881cd26f8234eb3e657edc96"
+  integrity sha512-hwyjw6GvjBLiyy3W0YQf0Z5Zf4NpYejUnKFcfcUhZCSffoBBp30w6wP2Wn6pk31jMYZvcOrB/1b7cGXvEoKogA==
   dependencies:
     "@babel/helper-validator-identifier" "^7.10.4"
     lodash "^4.17.19"
@@ -4403,6 +4403,11 @@ liftoff@3.1.0:
     object.map "^1.0.0"
     rechoir "^0.6.2"
     resolve "^1.1.7"
+
+light-date@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/light-date/-/light-date-1.2.0.tgz#b945e2c5acd8c42f07811430a253ecc0d2e28942"
+  integrity sha512-fdndhOogZm9m/XeAmP+UDgvplEd3SEfFoS3ObI6xhLmNyX3VdT+Ss8mddvP3XmVnh7I3t/Yg4OuFvWvYD+YBeA==
 
 line-column@^1.0.2:
   version "1.0.2"

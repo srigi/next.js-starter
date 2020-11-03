@@ -23,6 +23,7 @@
     "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
     "knex": "^0.21.12",
+    "light-date": "^1.2.0",
     "next": "~10.0.0",
     "next-connect": "^0.9.0",
     "pg": "^8.4.2",
