@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 
 const { NEXT_PUBLIC_SITE_NAME } = process.env;
 

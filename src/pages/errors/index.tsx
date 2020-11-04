@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import React from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
 import SimpleLayout from '../../components/layouts/SimpleLayout';

@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 const ClientTest4Page: NextPage = () => {
   useEffect(function effect() {

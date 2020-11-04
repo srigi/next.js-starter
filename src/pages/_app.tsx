@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import getConfig from 'next/config';
-import React, { FunctionComponent } from 'react';
+import { StrictMode, FunctionComponent } from 'react';
 import { RewriteFrames } from '@sentry/integrations';
 import * as Sentry from '@sentry/node';
 
@@ -30,10 +30,10 @@ if (NEXT_PUBLIC_SENTRY_DSN) {
 }
 
 const App: FunctionComponent<AppProps & { err: Record<string, unknown> }> = ({ Component, pageProps, err }) => (
-  <React.StrictMode>
+  <StrictMode>
     {/* eslint-disable-next-line react/jsx-props-no-spreading */}
     <Component {...pageProps} err={err} />
-  </React.StrictMode>
+  </StrictMode>
 );
 
 export default App;

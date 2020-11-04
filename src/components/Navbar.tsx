@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Nav, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { FiExternalLink } from 'react-icons/fi';
 

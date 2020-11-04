@@ -1,4 +1,3 @@
-import React from 'react';
 import Error from 'next/error';
 import { NextPage } from 'next';
 

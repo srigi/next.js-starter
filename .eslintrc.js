@@ -45,7 +45,9 @@ module.exports = {
     'no-nested-ternary': 'off', // they are fine sometimes
     'no-shadow': 'off', // shadowing is a nice language feature
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }], // fix for TypeScript
+    'react/jsx-uses-react': 'off', // not needed since new JSX transform
     'react/no-multi-comp': 'off', // it's fine
     'react/prop-types': 'off', // we have types
+    'react/react-in-jsx-scope': 'off', // not needed since new JSX transform
   },
 };

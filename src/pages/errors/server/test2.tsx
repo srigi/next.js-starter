@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from 'next';
-import React from 'react';
 
 const ServerTest2Page: NextPage = () => <h1>Server Test 2</h1>;
 

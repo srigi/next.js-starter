@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import React from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import cn from 'classnames';
 

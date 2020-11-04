@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from 'next';
-import React from 'react';
 
 const doAsyncWork = () => Promise.reject(new Error('Server Test 3'));
 
