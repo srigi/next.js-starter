@@ -1,8 +1,11 @@
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
-const withSourceMaps = require('@zeit/next-source-maps');
+const withSourceMaps = require('@zeit/next-source-maps')({
+  devtool: 'hidden-source-map',
+});
 
 const {
   GIT_REV,
+  IS_LOCAL,
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
   SENTRY_AUTH_TOKEN,
   SENTRY_ORG,
@@ -13,12 +16,12 @@ const {
 process.env.SENTRY_DSN = SENTRY_DSN;
 
 const COMMIT_SHA = GIT_REV || VERCEL_GITHUB_COMMIT_SHA || VERCEL_GITLAB_COMMIT_SHA;
+process.env.NEXT_PUBLIC_COMMIT_SHA = COMMIT_SHA;
+
 const basePath = '';
 
-process.env.NEXT_PUBLIC_COMMIT_SHA = COMMIT_SHA;
 module.exports = withSourceMaps({
   basePath,
-  devtool: 'hidden-source-map',
   reactStrictMode: true,
   serverRuntimeConfig: {
     rootDir: __dirname,
@@ -30,7 +33,7 @@ module.exports = withSourceMaps({
     }
 
     // upload the source maps during build step
-    if (!dev && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT && SENTRY_AUTH_TOKEN && COMMIT_SHA) {
+    if (!dev && !IS_LOCAL && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT && SENTRY_AUTH_TOKEN && COMMIT_SHA) {
       config.plugins.push(
         new SentryWebpackPlugin({
           include: '.next',
