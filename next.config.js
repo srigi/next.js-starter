@@ -5,6 +5,7 @@ const withSourceMaps = require('@zeit/next-source-maps')({
 
 const {
   GIT_REV,
+  IS_LOCAL,
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
   SENTRY_AUTH_TOKEN,
   SENTRY_ORG,
@@ -32,7 +33,7 @@ module.exports = withSourceMaps({
     }
 
     // upload the source maps during build step
-    if (!dev && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT && SENTRY_AUTH_TOKEN && COMMIT_SHA) {
+    if (!dev && !IS_LOCAL && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT && SENTRY_AUTH_TOKEN && COMMIT_SHA) {
       config.plugins.push(
         new SentryWebpackPlugin({
           include: '.next',
