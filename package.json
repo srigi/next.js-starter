@@ -12,6 +12,13 @@
     "start": "next start",
     "tsc": "tsc --noEmit"
   },
+  "husky": {
+    "hooks": {
+      "post-checkout": "./scripts/write-git-sha .env.local GIT_REV",
+      "post-commit": "./scripts/write-git-sha .env.local GIT_REV",
+      "post-merge": "./scripts/write-git-sha .env.local GIT_REV"
+    }
+  },
   "dependencies": {
     "@sentry/browser": "^5.26.0",
     "@sentry/integrations": "^5.26.0",
