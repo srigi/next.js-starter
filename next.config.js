@@ -15,9 +15,10 @@ const {
 process.env.SENTRY_DSN = SENTRY_DSN;
 
 const COMMIT_SHA = GIT_REV || VERCEL_GITHUB_COMMIT_SHA || VERCEL_GITLAB_COMMIT_SHA;
+process.env.NEXT_PUBLIC_COMMIT_SHA = COMMIT_SHA;
+
 const basePath = '';
 
-process.env.NEXT_PUBLIC_COMMIT_SHA = COMMIT_SHA;
 module.exports = withSourceMaps({
   basePath,
   reactStrictMode: true,
