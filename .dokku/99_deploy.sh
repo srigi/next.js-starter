@@ -35,5 +35,6 @@ ssh ${DOKKU_HOST} dokku config:set ${DOKKU_APP_NAME} \
 echo "OK!"
 
 printf "${COLOR_YELLOW}Deploying${NC} Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${DOKKU_HOST}${NC}... "
-git push dokku@${DOKKU_HOST} master
+GIT_CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+git push -f dokku@${DOKKU_HOST} ${GIT_CURRENT_BRANCH}:master
 echo "OK!"
