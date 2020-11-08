@@ -23,9 +23,3 @@ for DOKKU_HOST in ${DOKKU_HOSTS}; do
 	ssh ${!DOKKU_HOST} dokku proxy:ports-set ${DOKKU_APP_NAME} http:80:3000
 	echo "OK!"
 done
-
-for DOKKU_HOST in ${DOKKU_HOSTS}; do
-	printf "${COLOR_YELLOW}Linking${NC} Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} to Postgres database ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${!DOKKU_HOST}${NC}... "
-	ssh ${!DOKKU_HOST} dokku postgres:link ${DOKKU_APP_NAME} ${DOKKU_APP_NAME}
-	echo "OK!"
-done

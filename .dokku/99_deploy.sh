@@ -26,6 +26,7 @@ DOKKU_HOST=${!DOKKU_HOST_VAR}
 
 printf "${COLOR_YELLOW}Setting-up${NC} ENV vars for Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${DOKKU_HOST}${NC}... "
 ssh ${DOKKU_HOST} dokku config:set ${DOKKU_APP_NAME} \
+	DATABASE_URL=.data/main.sqlite3 \
 	NEXT_PUBLIC_SENTRY_DSN=${NEXT_PUBLIC_SENTRY_DSN} \
 	NEXT_TELEMETRY_DISABLED=1 \
 	SENTRY_ORG=${SENTRY_ORG} \

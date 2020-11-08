@@ -5,6 +5,14 @@ import { Container, Col, Row, Table } from 'react-bootstrap';
 import SimpleLayout from '../components/layouts/SimpleLayout';
 import { getDbConnection } from '../lib/db';
 
+interface UserRow {
+  id: string;
+  user_name: string; // eslint-disable-line camelcase
+  password?: string;
+  roles?: string;
+  created_at?: number; // eslint-disable-line camelcase
+  updated_at?: number; // eslint-disable-line camelcase
+}
 interface User {
   id: string;
   userName: string;
@@ -51,16 +59,19 @@ const DbPage: NextPage<Props> = ({ users }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const table = getDbConnection()('user');
+  const connection = await getDbConnection();
+  const table = connection('user');
   const users = await table.select('id', 'user_name', 'roles', 'created_at');
 
   return {
     props: {
-      users: users.map((user) => ({
+      users: users.map((user: UserRow) => ({
         id: user.id,
         userName: user.user_name,
-        roles: user.roles,
-        createdAt: format(user.created_at, '{yyyy}-{MM}-{dd}, {HH}:{mm}:{ss}'),
+        ...(user.roles != null && { roles: JSON.parse(user.roles) }),
+        ...(user.created_at != null && {
+          createdAt: format(new Date(user.created_at), '{yyyy}-{MM}-{dd}, {HH}:{mm}:{ss}'),
+        }),
       })),
     },
   };
