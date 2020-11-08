@@ -17,9 +17,3 @@ export const getDbConnection = async (): Promise<Knex> => {
 
   return _connection;
 };
-
-export const getTableDbConnection = async (tableName: string): Promise<Knex.QueryBuilder> => {
-  const connection = await getDbConnection();
-
-  return connection(tableName);
-};

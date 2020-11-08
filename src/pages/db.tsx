@@ -5,14 +5,6 @@ import { Container, Col, Row, Table } from 'react-bootstrap';
 import SimpleLayout from '../components/layouts/SimpleLayout';
 import { getDbConnection } from '../lib/db';
 
-interface UserRow {
-  id: string;
-  user_name: string; // eslint-disable-line camelcase
-  password?: string;
-  roles?: string;
-  created_at?: number; // eslint-disable-line camelcase
-  updated_at?: number; // eslint-disable-line camelcase
-}
 interface User {
   id: string;
   userName: string;
@@ -65,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      users: users.map((user: UserRow) => ({
+      users: users.map((user) => ({
         id: user.id,
         userName: user.user_name,
         ...(user.roles != null && { roles: JSON.parse(user.roles) }),
