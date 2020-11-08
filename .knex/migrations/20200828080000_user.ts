@@ -6,8 +6,9 @@ export async function up(knex: Knex): Promise<void> {
     table.string('user_name', 255).notNullable();
     table.string('password', 255).notNullable();
     table.json('roles').notNullable();
-    table.timestamp('created_at', { precision: 3, useTz: false }).notNullable().defaultTo(knex.fn.now(3));
-    table.timestamp('updated_at', { precision: 3, useTz: false }).defaultTo(null);
+    table.timestamps(true, true);
+
+    table.unique(['user_name']);
   });
 }
 
