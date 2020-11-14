@@ -18,9 +18,8 @@ const MyError = ({ statusCode, hasGetInitialPropsRun, err }: Props): JSX.Element
 };
 
 MyError.getInitialProps = async ({ AppTree, asPath, err, pathname, query, res }: NextPageContext) => {
-  const errorInitialProps = await NextErrorComponent.getInitialProps({ AppTree, err, pathname, query, res });
+  const errorInitialProps = (await NextErrorComponent.getInitialProps({ AppTree, err, pathname, query, res })) as Props;
 
-  // @ts-ignore
   errorInitialProps.hasGetInitialPropsRun = true;
 
   if (res?.statusCode === 404) {
