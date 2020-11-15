@@ -1,6 +1,6 @@
 # Provisioning
 DOKKU_APP_NAME=njss  # Next.JS Starter
-DOKKU_APP_PORT=3000
+#DOKKU_APP_PORT=5000 # not needed if default port is 5000
 DOKKU_HOST_DEV=
 #DOKKU_HOST_STAGING=
 #DOKKU_HOST_PROD=
