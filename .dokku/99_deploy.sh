@@ -28,14 +28,14 @@ GIT_DEFAULT_BRANCH='master'
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if [[ $GIT_BRANCH != $GIT_DEFAULT_BRANCH ]]; then
-	printf " ${COLOR_YELLOW}You are not on default branch!${NC} Do you want to deploy current branch ${COLOR_BLUE}${GIT_BRANCH}${NC}? [y/N]: ";
+	printf "> you ${COLOR_RED}are not on default branch!${NC} Do you want to deploy current branch ${COLOR_BLUE}${GIT_BRANCH}${NC}? [y/N]: ";
 	read INP
 	if [[ ${INP} != 'y' && $INP != 'Y' ]]; then
 		exit 1
 	fi
 fi
 
-printf "Update ${COLOR_YELLOW}ENV vars${NC} of Dokku app? [y/N]: "
+printf "> update ${COLOR_YELLOW}ENV vars${NC} of Dokku app? [y/N]: "
 read INP
 if [[ ${INP} == 'y' || $INP == 'Y' ]]; then
 	printf "${COLOR_YELLOW}Configuring${NC} ENV vars for Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${DOKKU_HOST}${NC}... "
@@ -47,8 +47,8 @@ if [[ ${INP} == 'y' || $INP == 'Y' ]]; then
 		SENTRY_PROJECT=${SENTRY_PROJECT} \
 		SENTRY_AUTH_TOKEN=${SENTRY_AUTH_TOKEN}
 	echo "OK!"
-	echo "done... waiting 10s"
-	sleep 10
+	echo "done... waiting 5s"
+	sleep 5
 fi
 
 printf "${COLOR_YELLOW}Deploying${NC} Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${DOKKU_HOST}${NC}... "
