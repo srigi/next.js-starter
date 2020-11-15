@@ -22,3 +22,38 @@
   font-size: 1.5rem;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.35);
 }
+
+.section {
+  padding: 3rem 0;
+}
+
+.shoutText {
+  padding: 1rem 2rem;
+}
+.shoutText h3 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.shoutText p {
+  font-size: 1.25rem;
+}
+
+.shoutImage {
+  padding: 0 3rem;
+}
+.shoutImage img {
+  width: 100%;
+  max-width: 250px;
+}
+
+.footer {
+  background-color: #252525;
+  color: #b7b7b7;
+  font-size: 1.2rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+.footer p {
+  margin-bottom: 0;
+}
