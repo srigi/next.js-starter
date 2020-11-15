@@ -1,16 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-
-html {
-  overflow-y: scroll;
-}
-
 body {
   font-family: Roboto, sans-serif;
-  color: #333;
-}
-
-
-.mw-800px {
-  max-width: 800px;
 }

@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'react';
-import { Container } from 'react-bootstrap';
 
 import Navbar from '../Navbar';
 import withTitle from '../../HOCs/withTitle';
@@ -11,9 +10,7 @@ type Props = {
 
 const SimpleLayout: FunctionComponent<Props> = ({ children }) => (
   <>
-    <Container className="mw-800px">
-      <Navbar />
-    </Container>
+    <Navbar />
 
     {children}
   </>
