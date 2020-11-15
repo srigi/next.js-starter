@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import SimpleLayout from '../components/layouts/SimpleLayout';
 import styles from './index.module.css';
 
+const { NEXT_PUBLIC_COMMIT_SHA } = process.env;
+
 const IndexPage: NextPage = () => {
   return (
     <SimpleLayout title="Welcome">
@@ -16,6 +18,9 @@ const IndexPage: NextPage = () => {
             <p>Jump right into most successful ReactJS framework</p>
           </Container>
         </div>
+        <p className={styles.gitRev}>
+          GIT_REV: <code>{NEXT_PUBLIC_COMMIT_SHA}</code>
+        </p>
       </header>
 
       <section className={styles.section}>

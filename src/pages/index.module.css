@@ -2,6 +2,7 @@
   background: url('/img/unsplash.jpg') 50% 50% no-repeat, linear-gradient(74deg, #031d3c, #0d0e13 80%);
   background-size: cover;
   padding: 184px 0 112px;
+  position: relative;
 }
 @media (min-width: 768px) {
   .header {
@@ -21,6 +22,34 @@
 .headerHero p {
   font-size: 1.5rem;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.35);
+}
+
+.gitRev {
+  color: #f1f1f1;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  position: absolute;
+  margin: 0;
+  max-width: 75%;
+  opacity: 0.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.gitRev:hover {
+  opacity: 1;
+}
+@media (min-width: 576px) {
+  .gitRev {
+    max-width: none;
+  }
+}
+.gitRev code {
+  color: #c7cc20;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .section {
