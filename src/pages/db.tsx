@@ -18,7 +18,7 @@ interface Props {
 
 const DbPage: NextPage<Props> = ({ users }) => {
   return (
-    <SimpleLayout title="Welcome">
+    <SimpleLayout title="DB test">
       <Container className="mw-800px">
         <Row>
           <Col>
