@@ -1,11 +1,59 @@
 .header {
-  background: linear-gradient(90deg, #f3f3f3, #484848 80%);
-}
-.headerContent {
-  background: url("/img/unsplash_a.jpg") 0 0 no-repeat;
+  background: url('/img/unsplash.jpg') 50% 50% no-repeat, linear-gradient(74deg, #031d3c, #0d0e13 80%);
   background-size: cover;
-  color: #ffffff;
-  height: 430px;
-  padding: 9rem 1rem 1rem 4rem;
+  padding: 184px 0 112px;
+}
+@media (min-width: 768px) {
+  .header {
+    padding: 215px 0 160px;
+  }
+}
+
+.headerHero {
   text-align: right;
+  color: #ffffff;
+}
+.headerHero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 0 4px 1px rgba(0, 0, 0, 0.5);
+}
+.headerHero p {
+  font-size: 1.5rem;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.35);
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.shoutText {
+  padding: 1rem 2rem;
+}
+.shoutText h3 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.shoutText p {
+  font-size: 1.25rem;
+}
+
+.shoutImage {
+  padding: 0 3rem;
+}
+.shoutImage img {
+  width: 100%;
+  max-width: 250px;
+}
+
+.footer {
+  background-color: #252525;
+  color: #b7b7b7;
+  font-size: 1.2rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+.footer p {
+  margin-bottom: 0;
 }
