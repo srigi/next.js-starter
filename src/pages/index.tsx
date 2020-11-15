@@ -61,12 +61,6 @@ const IndexPage: NextPage = () => {
           </Row>
         </Container>
       </section>
-
-      <footer className={styles.footer}>
-        <Container>
-          <p>Copyright &copy; 2020</p>
-        </Container>
-      </footer>
     </SimpleLayout>
   );
 };
