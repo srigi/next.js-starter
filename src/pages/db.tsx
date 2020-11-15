@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       users: users.map((user) => ({
         id: user.id,
         userName: user.user_name,
-        ...(user.roles != null && { roles: JSON.parse(user.roles) }),
+        ...(user.roles != null && { roles: typeof user.roles === 'string' ? JSON.parse(user.roles) : user.roles }),
         ...(user.created_at != null && {
           createdAt: format(new Date(user.created_at), '{yyyy}-{MM}-{dd}, {HH}:{mm}:{ss}'),
         }),
