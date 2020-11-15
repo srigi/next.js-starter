@@ -21,7 +21,7 @@ const IndexPage: NextPage = () => {
       <section className={styles.section}>
         <Container>
           <Row>
-            <Col>
+            <Col sm={{ span: 12 }} md={{ span: 6 }}>
               <div className={styles.shoutText}>
                 <h3>Typescript only</h3>
                 <p>
@@ -31,7 +31,7 @@ const IndexPage: NextPage = () => {
                 </p>
               </div>
             </Col>
-            <Col className="text-center justify-content-center align-self-center">
+            <Col sm={{ span: 12 }} md={{ span: 6 }} className="text-center justify-content-center align-self-center">
               <div className={styles.shoutImage}>
                 <img src="/img/logo-TS.png" alt="Typescript logo" />
               </div>
@@ -43,12 +43,12 @@ const IndexPage: NextPage = () => {
       <section className={styles.section}>
         <Container>
           <Row>
-            <Col className="text-center justify-content-center align-self-center">
+            <Col sm={{ span: 12 }} md={{ span: 6 }} className="text-center justify-content-center align-self-center">
               <div className={styles.shoutImage}>
                 <img src="/img/logo-ESLint.png" alt="ESLint logo" />
               </div>
             </Col>
-            <Col>
+            <Col sm={{ span: 12 }} md={{ span: 6 }}>
               <div className={styles.shoutText}>
                 <h3>Maximum strictness to code-quality</h3>
                 <p>
