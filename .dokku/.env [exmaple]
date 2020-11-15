@@ -1,5 +1,9 @@
+# Provisioning
 DOKKU_APP_NAME=njss  # Next.JS Starter
 DOKKU_APP_PORT=3000
 DOKKU_HOST_DEV=
 #DOKKU_HOST_STAGING=
 #DOKKU_HOST_PROD=
+
+# Runtime
+DATABASE_ENGINE=postgres
