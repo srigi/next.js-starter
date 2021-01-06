@@ -1,7 +1,4 @@
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
-const withSourceMaps = require('@zeit/next-source-maps')({
-  devtool: 'hidden-source-map',
-});
 
 const {
   GIT_REV,
@@ -20,17 +17,26 @@ process.env.NEXT_PUBLIC_COMMIT_SHA = COMMIT_SHA;
 
 const basePath = '';
 
-module.exports = withSourceMaps({
+module.exports = {
   basePath,
+  productionBrowserSourceMaps: true,
   reactStrictMode: true,
   serverRuntimeConfig: {
     rootDir: __dirname,
   },
-  webpack(config, { dev, isServer }) {
+  webpack(config, { dev, isServer, webpack }) {
     // replace @sentry/node imports with @sentry/browser when building the browser's bundle
     if (!isServer) {
       config.resolve.alias['@sentry/node'] = '@sentry/browser';
     }
+
+    // define an environment variable so source code can check whether or not
+    // it's running on the server so we can correctly initialize Sentry
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.NEXT_IS_SERVER': JSON.stringify(isServer.toString()),
+      }),
+    )
 
     // upload the source maps during build step
     if (!dev && !IS_LOCAL && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT && SENTRY_AUTH_TOKEN && COMMIT_SHA) {
@@ -47,4 +53,4 @@ module.exports = withSourceMaps({
 
     return config;
   },
-});
+};
