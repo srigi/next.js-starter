@@ -6,4 +6,3 @@ DOKKU_HOST_DEV=
 #DOKKU_HOST_PROD=
 
 # Runtime
-DATABASE_ENGINE=postgres

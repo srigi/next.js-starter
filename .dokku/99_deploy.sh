@@ -41,7 +41,6 @@ if [[ ${INP} == 'y' || $INP == 'Y' ]]; then
 	printf "${COLOR_YELLOW}Configuring${NC} ENV vars for Dokku app ${COLOR_BLUE}${DOKKU_APP_NAME}${NC} at Dokku host ${COLOR_GREEN}${DOKKU_HOST}${NC}... "
 	ssh ${DOKKU_HOST} dokku config:set ${DOKKU_APP_NAME} \
 		NEXT_TELEMETRY_DISABLED=1 \
-		DATABASE_ENGINE=${DATABASE_ENGINE} \
 		NEXT_PUBLIC_SENTRY_DSN=${NEXT_PUBLIC_SENTRY_DSN} \
 		NEXT_PUBLIC_SENTRY_SERVER_ROOT_DIR=/app/ \
 		SENTRY_ORG=${SENTRY_ORG} \
