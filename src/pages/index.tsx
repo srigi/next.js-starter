@@ -86,7 +86,6 @@ const IndexPage: NextPage = () => {
       <section className={styles.section}>
         <Container>
           <Grid container spacing={2} justifyContent="center">
-            {/* className="text-center justify-content-center align-self-center" */}
             <Grid item xs={12} sm={6} className={muiStyles.centeredGridItem}>
               <div className={styles.shoutImage}>
                 <img src="/img/logo-ESLint.png" alt="ESLint logo" />
