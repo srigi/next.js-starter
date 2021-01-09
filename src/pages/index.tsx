@@ -1,32 +1,70 @@
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { NextPage } from 'next';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
 import SimpleLayout from '../components/layouts/SimpleLayout';
 import styles from './index.module.css';
 
 const { NEXT_PUBLIC_COMMIT_SHA } = process.env;
 
+const useStyles = makeStyles((theme) => {
+  return {
+    hero: {
+      background: 'url("/img/unsplash.jpg") 50% 50% no-repeat, linear-gradient(74deg, #031d3c, #0d0e13 80%)',
+      backgroundSize: 'cover',
+      padding: '184px 0 112px',
+      position: 'relative',
+      [theme.breakpoints.up('md')]: {
+        padding: '215px 0 160px',
+      },
+    },
+    heroText: {
+      color: '#ffffff',
+      textAlign: 'right',
+    },
+    heroTextTitle: {
+      fontSize: '3.5rem',
+      fontWeight: 700,
+      textShadow: '0 4px 1px rgba(0, 0, 0, 0.5)',
+    },
+    heroTextSubtitle: {
+      fontSize: '1.5rem',
+      textShadow: '0 4px 1px rgba(0, 0, 0, 0.5)',
+    },
+    centeredGridItem: {
+      alignSelf: 'center',
+      textAlign: 'center',
+    },
+  };
+});
+
 const IndexPage: NextPage = () => {
+  const muiStyles = useStyles();
+
   return (
     <SimpleLayout title="Welcome">
-      <header className={styles.header}>
-        <div className={styles.headerHero}>
-          <Container>
-            <h1>Next.js starter</h1>
-            <p>Jump right into most successful ReactJS framework</p>
-          </Container>
-        </div>
+      <section className={muiStyles.hero}>
+        <Container>
+          <div className={muiStyles.heroText}>
+            <Typography variant="h1" className={muiStyles.heroTextTitle}>
+              Next.js starter
+            </Typography>
+            <Typography variant="h6" className={muiStyles.heroTextSubtitle}>
+              Jump right into most successful ReactJS framework
+            </Typography>
+          </div>
+        </Container>
         <p className={styles.gitRev}>
           GIT_REV: <code>{NEXT_PUBLIC_COMMIT_SHA}</code>
         </p>
-      </header>
+      </section>
 
       <section className={styles.section}>
         <Container>
-          <Row>
-            <Col sm={{ span: 12 }} md={{ span: 6 }}>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={12} sm={6}>
               <div className={styles.shoutText}>
                 <h3>Typescript only</h3>
                 <p>
@@ -35,25 +73,26 @@ const IndexPage: NextPage = () => {
                   molestiae adipisci, beatae obcaecati.
                 </p>
               </div>
-            </Col>
-            <Col sm={{ span: 12 }} md={{ span: 6 }} className="text-center justify-content-center align-self-center">
+            </Grid>
+            <Grid item xs={12} sm={6} className={muiStyles.centeredGridItem}>
               <div className={styles.shoutImage}>
                 <img src="/img/logo-TS.png" alt="Typescript logo" />
               </div>
-            </Col>
-          </Row>
+            </Grid>
+          </Grid>
         </Container>
       </section>
 
       <section className={styles.section}>
         <Container>
-          <Row>
-            <Col sm={{ span: 12 }} md={{ span: 6 }} className="text-center justify-content-center align-self-center">
+          <Grid container spacing={2} justifyContent="center">
+            {/* className="text-center justify-content-center align-self-center" */}
+            <Grid item xs={12} sm={6} className={muiStyles.centeredGridItem}>
               <div className={styles.shoutImage}>
                 <img src="/img/logo-ESLint.png" alt="ESLint logo" />
               </div>
-            </Col>
-            <Col sm={{ span: 12 }} md={{ span: 6 }}>
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <div className={styles.shoutText}>
                 <h3>Maximum strictness to code-quality</h3>
                 <p>
@@ -62,8 +101,8 @@ const IndexPage: NextPage = () => {
                   molestiae adipisci, beatae obcaecati.
                 </p>
               </div>
-            </Col>
-          </Row>
+            </Grid>
+          </Grid>
         </Container>
       </section>
     </SimpleLayout>
