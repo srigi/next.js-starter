@@ -21,6 +21,7 @@
     "@emotion/server": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "@material-ui/core": "next",
+    "@material-ui/icons": "^4.11.2",
     "@sentry/browser": "^5.26.0",
     "@sentry/integrations": "^5.26.0",
     "@sentry/node": "^5.26.0",
