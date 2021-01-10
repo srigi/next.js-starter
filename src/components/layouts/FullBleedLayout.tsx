@@ -1,3 +1,7 @@
+/*
+ * based on idea at https://www.joshwcomeau.com/css/full-bleed/
+ */
+
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import { FunctionComponent } from 'react';
@@ -14,8 +18,8 @@ type Props = {
 export const useStyles = makeStyles((theme) => ({
   container: {
     display: 'grid',
-    gap: `0 ${theme.spacing(2)}`,
-    gridTemplateColumns: `1fr min(${theme.breakpoints.values.md}px, 100%) 1fr`,
+    gridColumnGap: theme.spacing(2),
+    gridTemplateColumns: `1fr min(${theme.breakpoints.values.md}px, calc(100% - ${theme.spacing(4)})) 1fr`,
     '& > *': {
       display: 'flex',
       gridColumn: 2,

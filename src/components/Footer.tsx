@@ -9,15 +9,16 @@ interface Props {
   className?: string;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: grey.A400,
     color: cyan[100],
     fontSize: '1.2rem',
+    marginTop: theme.spacing(8),
     padding: '2rem 0',
     textAlign: 'center',
   },
-});
+}));
 
 const Footer: FunctionComponent<Props> = ({ className }) => {
   const styles = useStyles();

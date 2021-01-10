@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => {
     hero: {
       background: 'url("/img/unsplash.jpg") 50% 50% no-repeat, linear-gradient(74deg, #031d3c, #0d0e13 80%)',
       backgroundSize: 'cover',
+      marginBottom: theme.spacing(8),
       padding: '184px 0 112px',
       position: 'relative',
       [theme.breakpoints.up('md')]: {
@@ -63,19 +64,19 @@ const IndexPage: NextPage = () => {
         </Typography>
       </section>
 
-      <section className={styles.section}>
+      <section>
         <Grid container spacing={2} justifyContent="center">
-          <Grid item md>
+          <Grid item sm>
             <div className={styles.shoutText}>
-              <h3>Typescript only</h3>
-              <p>
+              <Typography variant="h3">Typescript only</Typography>
+              <Typography>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste
                 esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae
                 adipisci, beatae obcaecati.
-              </p>
+              </Typography>
             </div>
           </Grid>
-          <Grid item md className={muiStyles.centeredGridItem}>
+          <Grid item sm className={muiStyles.centeredGridItem}>
             <div className={styles.shoutImage}>
               <img src="/img/logo-TS.png" alt="Typescript logo" />
             </div>
@@ -83,14 +84,14 @@ const IndexPage: NextPage = () => {
         </Grid>
       </section>
 
-      <section className={styles.section}>
+      <section>
         <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={12} sm={6} className={muiStyles.centeredGridItem}>
+          <Grid item sm className={muiStyles.centeredGridItem}>
             <div className={styles.shoutImage}>
               <img src="/img/logo-ESLint.png" alt="ESLint logo" />
             </div>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm>
             <div className={styles.shoutText}>
               <h3>Maximum strictness to code-quality</h3>
               <p>

@@ -26,13 +26,6 @@
   font-weight: 700;
 }
 
-.section {
-  padding: 3rem 0;
-}
-
-.shoutText {
-  padding: 1rem 2rem;
-}
 .shoutText h3 {
   font-size: 3rem;
   font-weight: 700;
@@ -42,9 +35,6 @@
   font-size: 1.25rem;
 }
 
-.shoutImage {
-  padding: 0 3rem;
-}
 .shoutImage img {
   width: 100%;
   max-width: 250px;
