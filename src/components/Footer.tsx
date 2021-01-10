@@ -1,8 +1,13 @@
+import classNames from 'classnames';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { cyan, grey } from '@material-ui/core/colors';
 import { FunctionComponent } from 'react';
+
+interface Props {
+  className?: string;
+}
 
 const useStyles = makeStyles({
   footer: {
@@ -14,11 +19,11 @@ const useStyles = makeStyles({
   },
 });
 
-const Footer: FunctionComponent = () => {
+const Footer: FunctionComponent<Props> = ({ className }) => {
   const styles = useStyles();
 
   return (
-    <footer className={styles.footer}>
+    <footer className={classNames(styles.footer, className)}>
       <Container>
         <Typography>Copyright &copy; 2020</Typography>
       </Container>

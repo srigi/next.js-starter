@@ -1,10 +1,11 @@
+import classNames from 'classnames';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { NextPage } from 'next';
 
-import SimpleLayout from '../components/layouts/SimpleLayout';
+import FullBleedLayout, { useStyles as useLayoutStyles } from '../components/layouts/FullBleedLayout';
 import styles from './index.module.css';
 
 const { NEXT_PUBLIC_COMMIT_SHA } = process.env;
@@ -41,12 +42,13 @@ const useStyles = makeStyles((theme) => {
 });
 
 const IndexPage: NextPage = () => {
+  const layoutStyes = useLayoutStyles();
   const muiStyles = useStyles();
 
   return (
-    <SimpleLayout title="Welcome">
-      <section className={muiStyles.hero}>
-        <Container>
+    <FullBleedLayout title="Welcome">
+      <section className={classNames(muiStyles.hero, layoutStyes.unconstrained)}>
+        <Container maxWidth="md">
           <div className={muiStyles.heroText}>
             <Typography variant="h1" className={muiStyles.heroTextTitle}>
               Next.js starter
@@ -56,55 +58,51 @@ const IndexPage: NextPage = () => {
             </Typography>
           </div>
         </Container>
-        <p className={styles.gitRev}>
+        <Typography className={styles.gitRev}>
           GIT_REV: <code>{NEXT_PUBLIC_COMMIT_SHA}</code>
-        </p>
+        </Typography>
       </section>
 
       <section className={styles.section}>
-        <Container>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} sm={6}>
-              <div className={styles.shoutText}>
-                <h3>Typescript only</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste
-                  esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum
-                  molestiae adipisci, beatae obcaecati.
-                </p>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={6} className={muiStyles.centeredGridItem}>
-              <div className={styles.shoutImage}>
-                <img src="/img/logo-TS.png" alt="Typescript logo" />
-              </div>
-            </Grid>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item md>
+            <div className={styles.shoutText}>
+              <h3>Typescript only</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste
+                esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae
+                adipisci, beatae obcaecati.
+              </p>
+            </div>
           </Grid>
-        </Container>
+          <Grid item md className={muiStyles.centeredGridItem}>
+            <div className={styles.shoutImage}>
+              <img src="/img/logo-TS.png" alt="Typescript logo" />
+            </div>
+          </Grid>
+        </Grid>
       </section>
 
       <section className={styles.section}>
-        <Container>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} sm={6} className={muiStyles.centeredGridItem}>
-              <div className={styles.shoutImage}>
-                <img src="/img/logo-ESLint.png" alt="ESLint logo" />
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <div className={styles.shoutText}>
-                <h3>Maximum strictness to code-quality</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste
-                  esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum
-                  molestiae adipisci, beatae obcaecati.
-                </p>
-              </div>
-            </Grid>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={12} sm={6} className={muiStyles.centeredGridItem}>
+            <div className={styles.shoutImage}>
+              <img src="/img/logo-ESLint.png" alt="ESLint logo" />
+            </div>
           </Grid>
-        </Container>
+          <Grid item xs={12} sm={6}>
+            <div className={styles.shoutText}>
+              <h3>Maximum strictness to code-quality</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste
+                esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae
+                adipisci, beatae obcaecati.
+              </p>
+            </div>
+          </Grid>
+        </Grid>
       </section>
-    </SimpleLayout>
+    </FullBleedLayout>
   );
 };
 
