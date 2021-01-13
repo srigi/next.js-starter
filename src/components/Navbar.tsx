@@ -16,22 +16,20 @@ interface Props {
 
 const { NEXT_PUBLIC_SITE_NAME: siteName } = process.env;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   brand: {
-    alignItems: 'center',
     color: cyan[100],
     display: 'flex',
-    marginRight: 16,
     textDecoration: 'none',
     textTransform: 'uppercase',
   },
   brandImage: {
-    marginRight: 8,
+    marginRight: theme.spacing(1),
   },
   brandText: {
     fontSize: '1.25rem',
   },
-});
+}));
 
 const Navbar: FunctionComponent<Props> = ({ className }) => {
   const styles = useStyles();

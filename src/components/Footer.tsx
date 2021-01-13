@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { cyan, grey } from '@material-ui/core/colors';
+import { cyan } from '@material-ui/core/colors';
 import { FunctionComponent } from 'react';
 
 interface Props {
@@ -11,11 +11,10 @@ interface Props {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor: grey.A400,
+    backgroundColor: theme.palette.primary.dark,
     color: cyan[100],
-    fontSize: '1.2rem',
     marginTop: theme.spacing(8),
-    padding: '2rem 0',
+    padding: `${theme.spacing(3)} 0`,
     textAlign: 'center',
   },
 }));

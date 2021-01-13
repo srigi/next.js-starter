@@ -1,4 +1,3 @@
-import { red } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 export default createMuiTheme({
@@ -6,14 +5,14 @@ export default createMuiTheme({
     primary: {
       main: '#556cd6',
     },
-    secondary: {
-      main: '#19857b',
-    },
-    error: {
-      main: red.A400,
-    },
-    background: {
-      default: '#fff',
+  },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: '#2e5c85',
+        },
+      },
     },
   },
 });

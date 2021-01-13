@@ -1,5 +1,5 @@
 /*
- * based on idea at https://www.joshwcomeau.com/css/full-bleed/
+ * based on https://www.joshwcomeau.com/css/full-bleed/
  */
 
 import Box from '@material-ui/core/Box';
