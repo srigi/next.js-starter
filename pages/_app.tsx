@@ -5,8 +5,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
 import { StrictMode, FunctionComponent, useEffect } from 'react';
 
-import sentry from '../lib/sentry';
-import theme from '../theme';
+import sentry from '../src/lib/sentry';
+import theme from '../src/theme';
 
 sentry.init();
 

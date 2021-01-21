@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { NextPage } from 'next';
 
-import FullBleedLayout, { useStyles as useLayoutStyles } from '../components/layouts/FullBleedLayout';
+import FullBleedLayout, { useStyles as useLayoutStyles } from '../src/components/layouts/FullBleedLayout';
 import styles from './index.module.css';
 
 const { NEXT_PUBLIC_COMMIT_SHA } = process.env;

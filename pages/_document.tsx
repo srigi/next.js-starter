@@ -4,7 +4,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { Children } from 'react';
 
 import { cache } from './_app';
-import theme from '../theme';
+import theme from '../src/theme';
 
 const { extractCritical } = createEmotionServer(cache);
 
