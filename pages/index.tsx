@@ -1,35 +1,16 @@
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { NextPage } from 'next';
 
 import FullBleedLayout, { Unconstrained } from '../src/components/layouts/FullBleedLayout';
+import Hero from '../src/components/Hero';
 import Navbar from '../src/components/Navbar';
 import styles from './index.module.css';
 
 const { NEXT_PUBLIC_COMMIT_SHA } = process.env;
 
 const useStyles = makeStyles((theme) => ({
-  hero: {
-    background: 'url("/img/unsplash.jpg") 50% 50% no-repeat, linear-gradient(74deg, #031d3c, #0d0e13 80%)',
-    backgroundSize: 'cover',
-    padding: '184px 0 112px',
-    position: 'relative',
-  },
-  heroText: {
-    color: '#ffffff',
-    textAlign: 'right',
-  },
-  heroTextTitle: {
-    fontSize: '3.5rem',
-    fontWeight: 700,
-    textShadow: '0 4px 1px rgba(0, 0, 0, 0.5)',
-  },
-  heroTextSubtitle: {
-    fontSize: '1.5rem',
-    textShadow: '0 4px 1px rgba(0, 0, 0, 0.5)',
-  },
   centeredGridItem: {
     alignSelf: 'center',
     textAlign: 'center',
@@ -42,21 +23,7 @@ const IndexPage: NextPage = () => {
   return (
     <FullBleedLayout title="Welcome">
       <Unconstrained>
-        <section className={muiStyles.hero}>
-          <Container maxWidth="md">
-            <div className={muiStyles.heroText}>
-              <Typography variant="h1" className={muiStyles.heroTextTitle}>
-                Next.js starter
-              </Typography>
-              <Typography variant="h6" className={muiStyles.heroTextSubtitle}>
-                Jump right into most successful ReactJS framework
-              </Typography>
-            </div>
-          </Container>
-          <Typography className={styles.gitRev}>
-            GIT_REV: <code>{NEXT_PUBLIC_COMMIT_SHA}</code>
-          </Typography>
-        </section>
+        <Hero />
       </Unconstrained>
 
       <Unconstrained>
