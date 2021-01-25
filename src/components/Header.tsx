@@ -36,8 +36,8 @@ const Header: FunctionComponent<Props> = ({ className }) => {
 
   return (
     <AppBar className={className} position="static">
-      <Container maxWidth="md">
-        <Toolbar>
+      <Container maxWidth="md" disableGutters sx={{ px: 2, '@media (min-width: 996px)': { px: 0 } }}>
+        <Toolbar disableGutters>
           <Link href="/">
             <a className={styles.brand}>
               <img alt="Project logo" className={styles.brandImage} src="/img/logo.png" width={30} />{' '}
