@@ -22,3 +22,10 @@
   font-weight: 700;
   src: url('/fonts/roboto-v20-latin-ext-700.woff2') format('woff2');
 }
+
+/* sticky footer */
+html,
+body,
+#__next {
+  height: 100%;
+}

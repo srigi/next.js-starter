@@ -15,6 +15,13 @@ type Props = {
 };
 
 const useStyles = makeStyles((theme) => ({
+  StickyFooterWrapper: {
+    display: 'grid',
+    gridTemplateRows: '1fr auto',
+    gridRowGap: theme.spacing(6),
+    alignItems: 'start',
+    minHeight: '100%',
+  },
   FullBleedLayout: {
     display: 'grid',
     gridColumnGap: theme.spacing(2),
@@ -43,16 +50,16 @@ const FullBleedLayout: FunctionComponent<Props> = ({ children }) => {
   const styles = useStyles();
 
   return (
-    <div className={styles.FullBleedLayout}>
-      <Unconstrained>
-        <Header />
-      </Unconstrained>
+    <div className={styles.StickyFooterWrapper}>
+      <div className={styles.FullBleedLayout}>
+        <Unconstrained>
+          <Header />
+        </Unconstrained>
 
-      {children}
+        {children}
+      </div>
 
-      <Unconstrained>
-        <Footer />
-      </Unconstrained>
+      <Footer />
     </div>
   );
 };
