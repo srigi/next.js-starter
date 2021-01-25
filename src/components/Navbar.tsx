@@ -8,7 +8,7 @@ import { FunctionComponent } from 'react';
 
 const Navbar: FunctionComponent = () => {
   return (
-    <AppBar position="static" sx={{ mb: 5 }}>
+    <AppBar position="static">
       <Container maxWidth="md" disableGutters sx={{ px: 2, '@media (min-width: 996px)': { px: 0 } }}>
         <Toolbar disableGutters variant="dense">
           <Link href="/">

@@ -17,6 +17,7 @@ const IndexPage: NextPage = () => {
       <Unconstrained>
         <Navbar />
       </Unconstrained>
+      <Box sx={{ mb: 4 }} />
 
       <section>
         <Grid container alignItems="center" spacing={2} style={{ marginBottom: '4rem' }}>
