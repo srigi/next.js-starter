@@ -13,7 +13,9 @@ const Navbar: FunctionComponent = () => {
         <Toolbar disableGutters variant="dense">
           <Link href="/">
             <a>
-              <Typography component="span">Introduction</Typography>
+              <Typography component="span" color="textSecondary">
+                Introduction
+              </Typography>
             </a>
           </Link>
           <Box sx={{ flexGrow: 1 }} />
