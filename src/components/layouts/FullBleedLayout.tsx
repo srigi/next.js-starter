@@ -2,46 +2,65 @@
  * based on https://www.joshwcomeau.com/css/full-bleed/
  */
 
-import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, ReactNode, isValidElement } from 'react';
 
-import Navbar from '../Navbar';
+import Header from '../Header';
 import Footer from '../Footer';
 import withTitle from '../../HOCs/withTitle';
 
 type Props = {
-  children: JSX.Element | JSX.Element[];
+  children: ReactNode;
   title?: string;
 };
 
-export const useStyles = makeStyles((theme) => ({
-  container: {
+const useStyles = makeStyles((theme) => ({
+  StickyFooterWrapper: {
+    display: 'grid',
+    gridTemplateRows: '1fr auto',
+    gridRowGap: theme.spacing(6),
+    alignItems: 'start',
+    minHeight: '100%',
+  },
+  FullBleedLayout: {
     display: 'grid',
     gridColumnGap: theme.spacing(2),
     gridTemplateColumns: `1fr min(${theme.breakpoints.values.md}px, calc(100% - ${theme.spacing(4)})) 1fr`,
     '& > *': {
-      display: 'flex',
       gridColumn: 2,
     },
   },
-  unconstrained: {
-    gridColumn: '1 / 4',
+  Unconstrained: {
+    gridColumn: '1 / -1',
     width: '100%',
   },
 }));
+
+export const Unconstrained: FunctionComponent = ({ children }) => {
+  const styles = useStyles();
+
+  if (isValidElement(children)) {
+    return <div className={styles.Unconstrained}>{children}</div>;
+  }
+
+  return null;
+};
 
 const FullBleedLayout: FunctionComponent<Props> = ({ children }) => {
   const styles = useStyles();
 
   return (
-    <Box className={styles.container}>
-      <Navbar className={styles.unconstrained} />
+    <div className={styles.StickyFooterWrapper}>
+      <div className={styles.FullBleedLayout}>
+        <Unconstrained>
+          <Header />
+        </Unconstrained>
 
-      {children}
+        {children}
+      </div>
 
-      <Footer className={styles.unconstrained} />
-    </Box>
+      <Footer />
+    </div>
   );
 };
 

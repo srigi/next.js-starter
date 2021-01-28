@@ -11,7 +11,7 @@ const { extractCritical } = createEmotionServer(cache);
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           {/* favicon */}
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -23,25 +23,19 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
 
           {/* webfont(s) */}
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
           <link
             rel="preload"
-            href="https://fonts.gstatic.com/s/roboto/v20/KFOkCnqEu92Fr1MmgVxIIzIXKMny.woff2"
+            href="/fonts/roboto-v20-latin-ext-400.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2"
+            href="/fonts/roboto-v20-latin-ext-700.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
           />
         </Head>
         <body>

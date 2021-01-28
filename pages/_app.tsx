@@ -3,10 +3,12 @@ import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 import { StrictMode, FunctionComponent, useEffect } from 'react';
 
 import sentry from '../src/lib/sentry';
 import theme from '../src/theme';
+import './_app.css';
 
 sentry.init();
 
@@ -24,6 +26,9 @@ const App: FunctionComponent<AppProps & { err: Record<string, unknown> }> = ({ C
   return (
     <StrictMode>
       <CacheProvider value={cache}>
+        <Head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}

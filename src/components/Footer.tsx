@@ -1,33 +1,23 @@
-import classNames from 'classnames';
+import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import { cyan } from '@material-ui/core/colors';
 import { FunctionComponent } from 'react';
 
-interface Props {
-  className?: string;
-}
-
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    backgroundColor: theme.palette.primary.dark,
-    color: cyan[100],
-    marginTop: theme.spacing(8),
-    padding: `${theme.spacing(3)} 0`,
-    textAlign: 'center',
-  },
-}));
-
-const Footer: FunctionComponent<Props> = ({ className }) => {
-  const styles = useStyles();
-
+const Footer: FunctionComponent = () => {
   return (
-    <footer className={classNames(styles.footer, className)}>
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: (theme) => theme.palette.secondary.main,
+        py: (theme) => theme.spacing(3),
+      }}
+    >
       <Container>
-        <Typography>Copyright &copy; 2020</Typography>
+        <Typography color="textSecondary" align="center">
+          Copyright &copy; {new Date().getFullYear()}
+        </Typography>
       </Container>
-    </footer>
+    </Box>
   );
 };
 
