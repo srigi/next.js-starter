@@ -3,14 +3,20 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { FunctionComponent } from 'react';
 
+interface Props {
+  title: string;
+  subtitle?: string;
+  picture: string;
+}
+
 const { NEXT_PUBLIC_COMMIT_SHA } = process.env;
 
-const Hero: FunctionComponent = () => {
+const Hero: FunctionComponent<Props> = ({ title, subtitle, picture }) => {
   return (
     <Box
       component="section"
       sx={{
-        background: 'url("/img/unsplash.jpg") 50% 50% no-repeat, linear-gradient(74deg, #031d3c, #0d0e13 80%)',
+        background: `url("${picture}") 50% 50% no-repeat, linear-gradient(74deg, #031d3c, #0d0e13 80%)`,
         backgroundSize: 'cover',
         padding: '184px 0 112px',
         position: 'relative',
@@ -26,17 +32,19 @@ const Hero: FunctionComponent = () => {
               textShadow: '0 4px 1px rgba(0, 0, 0, 0.5)',
             }}
           >
-            Next.js starter
+            {title}
           </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: '1.5rem',
-              textShadow: '0 4px 1px rgba(0, 0, 0, 0.5)',
-            }}
-          >
-            Jump right into most successful ReactJS framework
-          </Typography>
+          {subtitle != null && (
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: '1.5rem',
+                textShadow: '0 4px 1px rgba(0, 0, 0, 0.5)',
+              }}
+            >
+              {subtitle}
+            </Typography>
+          )}
         </Box>
       </Container>
       <Typography

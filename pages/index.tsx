@@ -11,7 +11,11 @@ const IndexPage: NextPage = () => {
   return (
     <FullBleedLayout title="Welcome">
       <Unconstrained>
-        <Hero />
+        <Hero
+          title="Next.js starter"
+          subtitle="Jump right into most successful ReactJS framework"
+          picture="/img/unsplash.jpg"
+        />
       </Unconstrained>
 
       <Unconstrained>
