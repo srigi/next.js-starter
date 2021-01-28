@@ -12,11 +12,13 @@ const Navbar: FunctionComponent = () => {
       <Container maxWidth="md" disableGutters sx={{ px: 2, '@media (min-width: 996px)': { px: 0 } }}>
         <Toolbar disableGutters variant="dense">
           <Link href="/">
-            <a>
-              <Typography component="span" color="textSecondary">
-                Introduction
-              </Typography>
-            </a>
+            <Typography
+              component="a"
+              color="textSecondary"
+              sx={{ cursor: 'pointer', marginRight: 2, textDecoration: 'none' }}
+            >
+              Introduction
+            </Typography>
           </Link>
           <Box sx={{ flexGrow: 1 }} />
         </Toolbar>
