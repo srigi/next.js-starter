@@ -1,13 +1,23 @@
 import Box from '@material-ui/core/Box';
+import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { useAtom } from 'jotai';
 import { NextPage } from 'next';
 
 import FullBleedLayout, { Unconstrained } from '../src/components/layouts/FullBleedLayout';
 import Hero from '../src/components/Hero';
 import Navbar from '../src/components/Navbar';
+import LoginForm from '../src/components/forms/LoginForm';
+import indexPageAtom from '../src/atoms/indexPage';
 
 const IndexPage: NextPage = () => {
+  const [{ loginDrawerOpened }, setIndexPageAtom] = useAtom(indexPageAtom);
+
+  const handleLoginDrawerOnClose = () => {
+    setIndexPageAtom((atom) => ({ ...atom, loginDrawerOpened: false }));
+  };
+
   return (
     <FullBleedLayout title="Welcome">
       <Unconstrained>
@@ -59,6 +69,12 @@ const IndexPage: NextPage = () => {
           </Grid>
         </Grid>
       </section>
+
+      <Drawer anchor="right" open={loginDrawerOpened} onClose={handleLoginDrawerOnClose}>
+        <Box sx={{ padding: 2, width: 260 }}>
+          <LoginForm />
+        </Box>
+      </Drawer>
     </FullBleedLayout>
   );
 };
