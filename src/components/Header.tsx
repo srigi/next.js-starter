@@ -49,7 +49,6 @@ const Header: FunctionComponent<Props> = ({ className }) => {
           <Box sx={{ flexGrow: 1 }} />
           <Button
             variant="contained"
-            color="primary"
             startIcon={<GitHubIcon />}
             href="https://github.com/srigi/next.js-starter"
             target="_blank"
