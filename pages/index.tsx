@@ -72,7 +72,7 @@ const IndexPage: NextPage = () => {
 
       <Drawer anchor="right" open={loginDrawerOpened} onClose={handleLoginDrawerOnClose}>
         <Box sx={{ padding: 2, width: 260 }}>
-          <LoginForm />
+          <LoginForm onAuthenticated={handleLoginDrawerOnClose} />
         </Box>
       </Drawer>
     </FullBleedLayout>

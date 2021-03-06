@@ -6,14 +6,20 @@ import InputBase from '@material-ui/core/InputBase';
 import InputLabel from '@material-ui/core/InputLabel';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { FunctionComponent, SyntheticEvent } from 'react';
+import { FunctionComponent, SyntheticEvent, useEffect } from 'react';
 
 import {
   Payload as LoginCredentials,
   SuccessResponse as AuthenticationSuccessResponse,
 } from '../../../pages/api/auth/authenticate';
 import { ServerValidationErrorResponse } from '../../types/api';
+import { AUTH_KEY_NAME } from '../../lib/jwt';
 import useApiMutation from '../../lib/useApiMutation';
+import useLocalStorage from '../../lib/useLocalStorage';
+
+interface Props {
+  onAuthenticated: () => void;
+}
 
 const useStyles = makeStyles((theme) => ({
   loginForm: {
@@ -53,8 +59,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginForm: FunctionComponent = () => {
+const LoginForm: FunctionComponent<Props> = ({ onAuthenticated }) => {
   const classes = useStyles();
+  const [, setLocalStorage] = useLocalStorage<string>(AUTH_KEY_NAME);
   const { data: authenticationResponse, isLoading, mutate: authenticate } = useApiMutation<
     AuthenticationSuccessResponse | ServerValidationErrorResponse,
     LoginCredentials
@@ -71,6 +78,13 @@ const LoginForm: FunctionComponent = () => {
 
     authenticate(loginCredentials);
   };
+
+  useEffect(() => {
+    if (authenticationResponse != null && 'authToken' in authenticationResponse) {
+      setLocalStorage(authenticationResponse.authToken);
+      onAuthenticated();
+    }
+  }, [authenticationResponse, setLocalStorage, onAuthenticated]);
 
   return (
     <form className={classes.loginForm} onSubmit={handleSubmit}>
