@@ -1,3 +1,4 @@
+import { destroyCookie, setCookie } from 'nookies';
 import { FunctionComponent, useEffect, useState } from 'react';
 
 import { ValidationErrorsResponse } from '../types/api';
@@ -45,10 +46,15 @@ const SessionProvider: FunctionComponent = ({ children }) => {
   // handle successful authentication
   useEffect(() => {
     if (authenticationResponse != null && 'authToken' in authenticationResponse && jwtPublicKey != null) {
-      const { sub, roles } = loadAuthToken(authenticationResponse.authToken);
+      const { exp, sub, roles } = loadAuthToken(authenticationResponse.authToken);
 
       setUser({ username: sub, roles });
       setStoredJwt(authenticationResponse.authToken);
+      setCookie(null, AUTH_KEY_NAME, authenticationResponse.authToken, {
+        expires: new Date(exp * 1000),
+        path: '/',
+        sameSite: 'strict',
+      });
       // TODO attach to Jotai, so useApi* hooks can consume JWT
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,6 +71,7 @@ const SessionProvider: FunctionComponent = ({ children }) => {
         // JWT invalid, destroy session
         setStoredJwt(undefined);
         setUser(null);
+        destroyCookie(null, AUTH_KEY_NAME);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
