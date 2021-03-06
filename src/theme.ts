@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { deepPurple, green, grey, indigo } from '@material-ui/core/colors';
+import { deepPurple, green, grey, indigo, lightBlue } from '@material-ui/core/colors';
 
 export default createMuiTheme({
   palette: {
@@ -18,6 +18,13 @@ export default createMuiTheme({
       styleOverrides: {
         colorPrimary: {
           backgroundColor: indigo[600],
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: lightBlue[900],
         },
       },
     },
