@@ -2,11 +2,15 @@
  * based on https://www.joshwcomeau.com/css/full-bleed/
  */
 
+import Alert from '@material-ui/core/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles } from '@material-ui/core/styles';
+import { useAtom } from 'jotai';
 import { FunctionComponent, ReactNode, isValidElement } from 'react';
 
 import Header from '../Header';
 import Footer from '../Footer';
+import globalUIAtom from '../../atoms/globalUi';
 import withTitle from '../../HOCs/withTitle';
 
 type Props = {
@@ -48,6 +52,11 @@ export const Unconstrained: FunctionComponent = ({ children }) => {
 
 const FullBleedLayout: FunctionComponent<Props> = ({ children }) => {
   const styles = useStyles();
+  const [globalUi, setGlobalUiAtom] = useAtom(globalUIAtom);
+
+  const handleCloseErrorToast = () => {
+    setGlobalUiAtom((atom) => ({ ...atom, errorToast: null }));
+  };
 
   return (
     <div className={styles.StickyFooterWrapper}>
@@ -60,6 +69,17 @@ const FullBleedLayout: FunctionComponent<Props> = ({ children }) => {
       </div>
 
       <Footer />
+
+      <Snackbar
+        anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
+        open={globalUi.errorToast != null}
+        autoHideDuration={6000}
+        onClose={handleCloseErrorToast}
+      >
+        <Alert onClose={handleCloseErrorToast} variant="filled" severity="error">
+          {globalUi.errorToast}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

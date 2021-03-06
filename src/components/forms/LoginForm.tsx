@@ -1,21 +1,29 @@
+import Alert from '@material-ui/core/Alert';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import FormControl from '@material-ui/core/FormControl';
 import InputBase from '@material-ui/core/InputBase';
 import InputLabel from '@material-ui/core/InputLabel';
-import LoadingButton from '@material-ui/lab/LoadingButton';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { FunctionComponent, SyntheticEvent, useEffect } from 'react';
-import { useMutation } from 'react-query';
+import { FunctionComponent, SyntheticEvent } from 'react';
 
-interface LoginCredentials {
-  username: string;
-  password: string;
-}
+import {
+  Payload as LoginCredentials,
+  SuccessResponse as AuthenticationSuccessResponse,
+} from '../../../pages/api/auth/authenticate';
+import { ServerValidationErrorResponse } from '../../types/api';
+import useApiMutation from '../../lib/useApiMutation';
 
 const useStyles = makeStyles((theme) => ({
   loginForm: {
     color: theme.palette.text.secondary,
     textAlign: 'center',
+
+    '& .infoSpace': {
+      minHeight: '3rem',
+      marginBottom: theme.spacing(2),
+    },
 
     '& .MuiFormControl-root': {
       width: '100%',
@@ -47,22 +55,10 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginForm: FunctionComponent = () => {
   const classes = useStyles();
-  const { data, error, isError, isLoading, isSuccess, mutate: authenticate } = useMutation<
-    Record<string, unknown>,
-    Error,
+  const { data: authenticationResponse, isLoading, mutate: authenticate } = useApiMutation<
+    AuthenticationSuccessResponse | ServerValidationErrorResponse,
     LoginCredentials
-  >(async (credentials) => {
-    const response = await fetch('/api/auth/authenticate', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials),
-    });
-    if (!response.ok) {
-      throw new Error(`[${response.status}] ${response.statusText}`);
-    }
-
-    return response.json();
-  });
+  >('post', '/auth/authenticate');
 
   const handleSubmit = (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -78,9 +74,22 @@ const LoginForm: FunctionComponent = () => {
 
   return (
     <form className={classes.loginForm} onSubmit={handleSubmit}>
-      <Typography variant="h4" sx={{ mt: 2, mb: 4 }}>
+      <Typography variant="h4" sx={{ mt: 4, mb: 4 }}>
         Login
       </Typography>
+
+      <div className="infoSpace">
+        <>
+          {isLoading && <CircularProgress />}
+          {authenticationResponse != null &&
+            'serverValidationErrors' in authenticationResponse &&
+            Object.entries(authenticationResponse.serverValidationErrors).map(([field, errorMessage]) => (
+              <Alert key={field} variant="filled" severity="error">
+                {errorMessage}
+              </Alert>
+            ))}
+        </>
+      </div>
 
       <FormControl>
         <InputLabel shrink htmlFor="username">
@@ -96,9 +105,9 @@ const LoginForm: FunctionComponent = () => {
         <InputBase id="password" type="password" required />
       </FormControl>
 
-      <LoadingButton type="submit" pending={isLoading} variant="contained">
+      <Button type="submit" variant="contained" disabled={isLoading}>
         Submit
-      </LoadingButton>
+      </Button>
     </form>
   );
 };
