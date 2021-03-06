@@ -8,6 +8,7 @@ import globalUIAtom from '../atoms/globalUi';
 const useApiMutation = <TData, TVariables>(
   method: 'post' | 'put',
   endpoint: string,
+  onSuccess?: (responsePayload: TData) => void,
 ): UseMutationResult<TData, Error, TVariables> => {
   const [, setGlobalUiAtom] = useAtom(globalUIAtom);
 
@@ -25,10 +26,16 @@ const useApiMutation = <TData, TVariables>(
 
         const responsePayload = (await response.json()) as ServerValidationFailedResponse;
 
-        return { serverValidationErrors: responsePayload.violations };
+        return { validationErrors: responsePayload.violations };
       }
 
-      return response.json();
+      const responsePayload = await response.json();
+
+      if (typeof onSuccess === 'function') {
+        return onSuccess(responsePayload);
+      }
+
+      return responsePayload;
     } catch (exc) {
       const match = exc.message?.match(/\[(\d+)]/);
       if (match != null) {

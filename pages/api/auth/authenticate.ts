@@ -4,14 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { ALGORITHM } from '../../../src/lib/jwt';
 import getApiHandler from '../../../src/lib/getApiHandler';
 
-export interface Payload {
-  username: string;
-  password: string;
-}
-
-export interface SuccessResponse {
-  authToken: string;
-}
+import { Payload } from '../../../src/types/api.authenticate';
 
 const AUTHENTICATION_TOKEN_VALID_PERIOD = '2 days';
 const JWT_PRIVATE_KEY = process.env.NEXT_PUBLIC_JWT_PRIVATE_KEY!;

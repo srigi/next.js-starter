@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-const useLocalStorage = <T>(key: string): [T | undefined, (value: ((prevValue: T) => void) | T) => void] => {
+const useLocalStorage = <T>(
+  key: string,
+): [T | undefined, (value: ((prevValue: T) => T | undefined) | T | undefined) => void] => {
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window !== 'undefined') {
       const item = window.localStorage.getItem(key);
@@ -11,11 +13,15 @@ const useLocalStorage = <T>(key: string): [T | undefined, (value: ((prevValue: T
     return undefined;
   });
 
-  const setValue = (value: ((prevValue: T) => void) | T) => {
+  const setValue = (value: ((prevValue: T) => T | undefined) | T | undefined) => {
     const valueToStore = value instanceof Function ? value(storedValue) : value;
 
     setStoredValue(valueToStore);
-    window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    if (valueToStore === undefined) {
+      window.localStorage.removeItem(key);
+    } else {
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    }
   };
 
   return [storedValue, setValue];

@@ -8,9 +8,11 @@ import { useAtom } from 'jotai';
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
 
+import useSession from '../hooks/useSession';
 import indexPageAtom from '../atoms/indexPage';
 
 const Navbar: FunctionComponent = () => {
+  const session = useSession();
   const [, setIndexPageAtom] = useAtom(indexPageAtom);
 
   const handleLoginBtnClick = () => {
@@ -31,9 +33,13 @@ const Navbar: FunctionComponent = () => {
             </Typography>
           </Link>
           <Box sx={{ flexGrow: 1 }} />
-          <Button variant="contained" onClick={handleLoginBtnClick}>
-            login
-          </Button>
+          {session.user == null ? (
+            <Button variant="contained" onClick={handleLoginBtnClick}>
+              login
+            </Button>
+          ) : (
+            <Typography>{session.user.username}</Typography>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

@@ -8,14 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { FunctionComponent, SyntheticEvent, useEffect } from 'react';
 
-import {
-  Payload as LoginCredentials,
-  SuccessResponse as AuthenticationSuccessResponse,
-} from '../../../pages/api/auth/authenticate';
-import { ServerValidationErrorResponse } from '../../types/api';
-import { AUTH_KEY_NAME } from '../../lib/jwt';
-import useApiMutation from '../../lib/useApiMutation';
-import useLocalStorage from '../../lib/useLocalStorage';
+import { Payload as LoginCredentials } from '../../types/api.authenticate';
+import useSession from '../../hooks/useSession';
 
 interface Props {
   onAuthenticated: () => void;
@@ -61,11 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginForm: FunctionComponent<Props> = ({ onAuthenticated }) => {
   const classes = useStyles();
-  const [, setLocalStorage] = useLocalStorage<string>(AUTH_KEY_NAME);
-  const { data: authenticationResponse, isLoading, mutate: authenticate } = useApiMutation<
-    AuthenticationSuccessResponse | ServerValidationErrorResponse,
-    LoginCredentials
-  >('post', '/auth/authenticate');
+  const { authenticate, authenticationResponse, isAuthenticating } = useSession();
 
   const handleSubmit = (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -81,10 +71,10 @@ const LoginForm: FunctionComponent<Props> = ({ onAuthenticated }) => {
 
   useEffect(() => {
     if (authenticationResponse != null && 'authToken' in authenticationResponse) {
-      setLocalStorage(authenticationResponse.authToken);
       onAuthenticated();
     }
-  }, [authenticationResponse, setLocalStorage, onAuthenticated]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authenticationResponse]);
 
   return (
     <form className={classes.loginForm} onSubmit={handleSubmit}>
@@ -94,10 +84,10 @@ const LoginForm: FunctionComponent<Props> = ({ onAuthenticated }) => {
 
       <div className="infoSpace">
         <>
-          {isLoading && <CircularProgress />}
+          {isAuthenticating && <CircularProgress />}
           {authenticationResponse != null &&
-            'serverValidationErrors' in authenticationResponse &&
-            Object.entries(authenticationResponse.serverValidationErrors).map(([field, errorMessage]) => (
+            'validationErrors' in authenticationResponse &&
+            Object.entries(authenticationResponse.validationErrors).map(([field, errorMessage]) => (
               <Alert key={field} variant="filled" severity="error">
                 {errorMessage}
               </Alert>
@@ -119,7 +109,7 @@ const LoginForm: FunctionComponent<Props> = ({ onAuthenticated }) => {
         <InputBase id="password" type="password" required />
       </FormControl>
 
-      <Button type="submit" variant="contained" disabled={isLoading}>
+      <Button type="submit" variant="contained" disabled={isAuthenticating}>
         Submit
       </Button>
     </form>

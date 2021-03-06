@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { StrictMode, FunctionComponent, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import SessionProvider from '../src/providers/SessionProvider';
 import sentry from '../src/lib/sentry';
 import theme from '../src/theme';
 import './_app.css';
@@ -36,8 +37,10 @@ const App: FunctionComponent<AppProps & { err: Record<string, unknown> }> = ({ C
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <QueryClientProvider client={queryClient}>
-              {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-              <Component {...pageProps} err={err} />
+              <SessionProvider>
+                {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                <Component {...pageProps} err={err} />
+              </SessionProvider>
             </QueryClientProvider>
           </ThemeProvider>
         </EmotionCacheProvider>
