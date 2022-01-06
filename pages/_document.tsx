@@ -21,6 +21,15 @@ export default class MyDocument extends Document {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+
+          {/* webfont(s) */}
+          <link
+            rel="preload"
+            href="/fonts/alata-v2-latin-ext_latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body>
           <Main />

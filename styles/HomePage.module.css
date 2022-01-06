@@ -1,7 +1,9 @@
 .title {
+  font-family: Alata, Helvetica, sans-serif;
+  font-size: 4rem;
+
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
 }
 
   .title a {
