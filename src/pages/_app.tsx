@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 
-import { NextPageWithLayout } from "../src/types";
-import "../styles/globals.css";
+import { NextPageWithLayout } from "types";
+import "styles/globals.css";
 
 interface MyAppProps extends AppProps {
   Component: NextPageWithLayout;

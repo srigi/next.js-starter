@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { FunctionComponent, ReactElement } from "react";
 
-import styles from "../../styles/layouts/landingPage.module.css";
+import styles from "styles/layouts/landingPage.module.css";
 
 const WEBSITE_NAME = process.env.NEXT_PUBLIC_WEBSITE_NAME;
 

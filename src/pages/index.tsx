@@ -1,7 +1,8 @@
-import { NextPageWithLayout } from "../src/types";
-import withLandingPageLayout from "../src/layouts/landingPage";
-import styles from "../styles/HomePage.module.css";
 import Image from "next/image";
+
+import { NextPageWithLayout } from "types";
+import withLandingPageLayout from "layouts/landingPage";
+import styles from "styles/HomePage.module.css";
 
 const WEBSITE_NAME = process.env.NEXT_PUBLIC_WEBSITE_NAME;
 
