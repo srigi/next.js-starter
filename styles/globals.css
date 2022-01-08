@@ -22,6 +22,8 @@ body {
 body {
   background-color: #061B23;
   color: #ffffffea;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
 a {
@@ -31,3 +33,11 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.title {
+  font-family: Alata, Helvetica, sans-serif;
+  font-size: 3.75rem;
+  line-height: 1.15;
+  margin: 1rem 0;
+}
+

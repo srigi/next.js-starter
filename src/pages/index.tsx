@@ -10,7 +10,7 @@ const HomePage: NextPageWithLayout = () => {
   return (
     <>
       <div className={styles.call}>
-        <h1 className={styles.title}>{WEBSITE_NAME}</h1>
+        <h1 className="title">{WEBSITE_NAME}</h1>
         <p className={styles.description}>
           On s’plante est un outil interactif qui vous aide à trouver des
           plantes compagnes pour vos légumes, fruits et fleurs.
