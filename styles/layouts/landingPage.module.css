@@ -7,13 +7,6 @@
   min-height: 100vh;
 }
 
-  .header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 0;
-  }
-
   .main {
     align-items: center;
     display: flex;
@@ -21,17 +14,4 @@
     gap: 2rem;
     justify-content: space-between;
     padding: 4rem 0;
-  }
-
-  .footer {
-    --text-color: #ffffff40;
-
-    align-items: center;
-    border-top: 1px solid var(--text-color);
-    color: var(--text-color);
-    display: flex;
-    gap: 5px;
-    justify-content: center;
-    padding: 1.5rem 0;
-    width: 100%;
   }
