@@ -1,35 +1,32 @@
 import { NextPageWithLayout } from "../src/types";
-import withDefaultLayout from "../src/layouts/default";
+import withLandingPageLayout from "../src/layouts/landingPage";
 import styles from "../styles/HomePage.module.css";
+import Image from "next/image";
 
 const WEBSITE_NAME = process.env.NEXT_PUBLIC_WEBSITE_NAME;
 
 const HomePage: NextPageWithLayout = () => {
   return (
     <>
-      <h1 className={styles.title}>
-        Welcome to <a href="https://nextjs.org">{WEBSITE_NAME}</a>
-      </h1>
-      <p className={styles.description}>
-        Get started by editing{" "}
-        <code className={styles.code}>pages/index.tsx</code>
-      </p>
-
-      <div className={styles.grid}>
-        <a href="https://nextjs.org/docs" className={styles.card}>
-          <h2>Documentation &rarr;</h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a href="https://nextjs.org/learn" className={styles.card}>
-          <h2>Learn &rarr;</h2>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
+      <div className={styles.call}>
+        <h1 className={styles.title}>{WEBSITE_NAME}</h1>
+        <p className={styles.description}>
+          On s’plante est un outil interactif qui vous aide à trouver des
+          plantes compagnes pour vos légumes, fruits et fleurs.
+        </p>
+        <button className={styles.cta}>Action</button>
       </div>
+
+      <Image
+        src="/images/hero@2x.png"
+        alt="Hero image"
+        width={472}
+        height={500}
+      />
     </>
   );
 };
 
-HomePage.getLayout = (page) => withDefaultLayout(page);
+HomePage.getLayout = (page) => withLandingPageLayout(page);
 
 export default HomePage;

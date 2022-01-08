@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Alata';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('/fonts/alata-v2-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+  url('/fonts/alata-v2-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,11 +19,15 @@ body {
   padding: 0;
 }
 
-@font-face {
-  font-family: 'Alata';
-  font-style: normal;
-  font-weight: 400;
-  src: local(''),
-    url('/fonts/alata-v2-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('/fonts/alata-v2-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+body {
+  background-color: #061B23;
+  color: #ffffffea;
+}
+
+a {
+  color: #a77ff0;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
