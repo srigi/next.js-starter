@@ -7,6 +7,13 @@
   min-height: 100vh;
 }
 
+  .header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+  }
+
   .main {
     align-items: center;
     display: flex;
