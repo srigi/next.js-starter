@@ -25,7 +25,21 @@ export default class MyDocument extends Document {
           {/* webfont(s) */}
           <link
             rel="preload"
-            href="/fonts/alata-v2-latin-ext_latin-regular.woff2"
+            href="/fonts/ubuntu-v15-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/rubik-v14-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/rubik-v14-latin-500.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"

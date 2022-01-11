@@ -1,43 +1,103 @@
+:root {
+  --martinique-900: #352d58;
+  --martinique-700: #54468b;
+  --martinique-500: #796ab4;
+  --martinique-300: #a79dcd;
+  --martinique-100: #d4d0e7;
+  --martinique-50: #f3f1f8;
+
+  --cranberry-900: #861836;
+  --cranberry-700: #c72350;
+  --cranberry-500: #e1567c;
+  --cranberry-300: #ed97ae;
+  --cranberry-100: #f8d8e1;
+  --cranberry-50: #fceef2;
+
+  --spacing: 12px;
+  --desktop-width: calc(76 * var(--spacing));
+}
+
 @font-face {
-  font-family: 'Alata';
+  font-display: fallback;
+  font-family: "Ubuntu";
   font-style: normal;
-  font-weight: 400;
-  src: local(''),
-  url('/fonts/alata-v2-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-  url('/fonts/alata-v2-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-weight: normal;
+  src: local(""), url("/fonts/ubuntu-v15-latin-regular.woff2") format("woff2"),
+    url("/fonts/ubuntu-v15-latin-regular.woff") format("woff");
+}
+@font-face {
+  font-display: fallback;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  src: local(""), url("/fonts/ubuntu-v15-latin-500.woff2") format("woff2"),
+    url("/fonts/ubuntu-v15-latin-500.woff") format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: normal;
+  src: local(""), url("/fonts/rubik-v14-latin-regular.woff2") format("woff2"),
+    url("/fonts/rubik-v14-latin-regular.woff") format("woff");
+}
+@font-face {
+  font-display: fallback;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  src: local(""), url("/fonts/rubik-v14-latin-500.woff2") format("woff2"),
+    url("/fonts/rubik-v14-latin-500.woff") format("woff");
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: #061B23;
-  color: #ffffffea;
-  font-size: 1.2rem;
-  line-height: 1.5;
+  background-color: #f0f0f0;
+  color: var(--martinique-900);
+  font-family: Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial,
+    sans-serif;
 }
 
 a {
-  color: #a77ff0;
-  text-decoration: none;
-}
-a:hover {
+  color: var(--cranberry-500);
   text-decoration: underline;
 }
-
-.title {
-  font-family: Alata, Helvetica, sans-serif;
-  font-size: 3.75rem;
-  line-height: 1.15;
-  margin: 1rem 0;
+a:hover {
+  color: var(--cranberry-700);
 }
 
+strong {
+  color: var(--cranberry-500);
+  font-weight: 500;
+}
+
+h1,
+h2 {
+  font-family: Rubik, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 24px;
+}

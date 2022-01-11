@@ -1,14 +1,13 @@
-.description {
-  max-width: 35rem;
+.claim,
+.claimSecondary {
+  margin: 0;
+  text-align: center;
 }
 
-.cta {
-  background: #a77ff0;
-  border-radius: 35px;
-  border: none;
-  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-  color: inherit;
-  cursor: pointer;
-  font-size: 1.5rem;
-  padding: 0.75rem 3rem;
+.claim {
+  margin-bottom: var(--spacing);
+}
+.claimSecondary {
+  color: var(--cranberry-500);
+  margin-bottom: calc(4 * var(--spacing));
 }

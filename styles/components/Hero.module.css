@@ -1,0 +1,30 @@
+.hero {
+  background: url("/images/hero.jpg") 50% 50% no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--spacing));
+  height: 528px;
+  justify-content: center;
+  margin-bottom: calc(4 * var(--spacing));
+}
+
+.title,
+.disclaimer {
+  color: var(--martinique-50);
+  margin: 0 auto;
+  max-width: var(--desktop-width);
+  padding: 0 var(--spacing);
+  text-align: right;
+  text-shadow: 0 4px 1px rgb(0 0 0 / 50%);
+  width: 100%;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: normal;
+}
+
+.disclaimer {
+  font-size: 24px;
+}

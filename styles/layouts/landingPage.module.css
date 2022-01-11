@@ -1,17 +1,25 @@
-.container {
+.layout {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  padding: 0 1rem;
-  max-width: 1060px;
   min-height: 100vh;
 }
 
-  .main {
-    align-items: center;
-    display: flex;
-    flex: 1;
-    gap: 2rem;
-    justify-content: space-between;
-    padding: 4rem 0;
-  }
+.content {
+  display: grid;
+  flex: 1;
+  grid-auto-rows: min-content;
+  grid-column-gap: var(--spacing);
+  grid-template-columns:
+    1fr min(var(--desktop-width), calc(100% - (2 * var(--spacing))))
+    1fr;
+  margin-bottom: calc(8 * var(--spacing));
+}
+.content > * {
+  grid-column: 2;
+  padding: 0 var(--spacing);
+}
+
+.unconstrained {
+  grid-column: 1/-1;
+  padding: 0;
+}

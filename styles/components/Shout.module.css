@@ -1,0 +1,11 @@
+.shout {
+  display: flex;
+  gap: calc(4 * var(--spacing));
+  justify-content: space-between;
+  margin-bottom: calc(6 * var(--spacing));
+}
+
+.image > span {
+  border-radius: 10px;
+  box-shadow: 1px 4px 10px rgb(0 0 0 / 50%);
+}

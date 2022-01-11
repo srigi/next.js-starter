@@ -7,13 +7,21 @@ import styles from "styles/components/LayoutHeader.module.css";
 const LayoutHeader: FunctionComponent = () => {
   return (
     <header className={styles.header}>
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a href="/">
-        <Image src="/images/logo.png" alt="Site logo" width={36} height={36} />
-      </a>
-      <nav>
-        <Link href="/profile">profile</Link>
-      </nav>
+      <div className={styles.container}>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/" className={styles.brand}>
+          <Image
+            src="/images/logo.svg"
+            alt="Site logo"
+            width={64}
+            height={36}
+          />
+          Next.js starter
+        </a>
+        <nav className={styles.nav}>
+          <Link href="/profile">profile</Link>
+        </nav>
+      </div>
     </header>
   );
 };

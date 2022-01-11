@@ -1,14 +1,29 @@
-import { FunctionComponent, ReactElement } from "react";
+import {
+  FunctionComponent,
+  ReactElement,
+  cloneElement,
+  isValidElement,
+} from "react";
 
 import LayoutHeader from "components/LayoutHeader";
 import LayoutFooter from "components/LayoutFooter";
 import styles from "styles/layouts/landingPage.module.css";
 
+export const Unconstrained: FunctionComponent = ({ children }) => {
+  if (isValidElement(children)) {
+    return cloneElement(children, {
+      className: `${styles.unconstrained} ${children.props.className}`,
+    });
+  }
+
+  return null;
+};
+
 const LandingPageLayout: FunctionComponent = ({ children }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.layout}>
       <LayoutHeader />
-      <main className={styles.main}>{children}</main>
+      <main className={styles.content}>{children}</main>
       <LayoutFooter />
     </div>
   );

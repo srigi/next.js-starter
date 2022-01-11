@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { NextPageWithLayout } from "types";
-import withInfoDetailLayout from "layouts/infoDetail";
+import withLandingPageLayout from "layouts/landingPage";
 import styles from "styles/ProfilePage.module.css";
 
 const ProfilePage: NextPageWithLayout = () => {
@@ -52,6 +52,6 @@ const ProfilePage: NextPageWithLayout = () => {
   );
 };
 
-ProfilePage.getLayout = (fn) => withInfoDetailLayout(fn("Profile"));
+ProfilePage.getLayout = (fn) => withLandingPageLayout(fn());
 
 export default ProfilePage;
