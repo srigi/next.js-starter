@@ -52,6 +52,6 @@ const ProfilePage: NextPageWithLayout = () => {
   );
 };
 
-ProfilePage.getLayout = (page) => withInfoDetailLayout(page, "Profile");
+ProfilePage.getLayout = (fn) => withInfoDetailLayout(fn("Profile"));
 
 export default ProfilePage;

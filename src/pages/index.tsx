@@ -28,6 +28,6 @@ const HomePage: NextPageWithLayout = () => {
   );
 };
 
-HomePage.getLayout = (page) => withLandingPageLayout(page);
+HomePage.getLayout = (fn) => withLandingPageLayout(fn());
 
 export default HomePage;
