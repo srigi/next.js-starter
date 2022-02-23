@@ -5,7 +5,8 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint --dir . --dir pages --dir src",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lt": "yarn lint && yarn tsc"
   },
   "engines": {
     "node": "^16 || ^14"
