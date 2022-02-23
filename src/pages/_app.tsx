@@ -12,7 +12,11 @@ const WEBSITE_NAME = process.env.NEXT_PUBLIC_WEBSITE_NAME;
 
 export default function MyApp({ Component, pageProps }: MyAppProps) {
   // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout =
+    Component.getLayout ||
+    function getLayout(fn) {
+      return fn();
+    };
 
   return getLayout(
     (title) => (
